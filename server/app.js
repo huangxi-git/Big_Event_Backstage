@@ -13,6 +13,8 @@ const server = express();
 const cors = require('cors');
 server.use(cors());
 
+// 静态资源设置
+server.use('/uploads', express.static('uploads'));
 
 // 中间件技术 -- 验证 token -- 代码官网赋值
 const jwt = require('express-jwt');
@@ -26,20 +28,26 @@ server.use(jwt({
     path: [
         '/user/api/reguser',
         '/user/api/login',
-        '/categories/my/article/deletecate',
-        '/categories/my/article/addcates',
-        '/categories/my/article/cates',
-        '/categories/my/article/getCatesById',
-        '/categories/my/article/updatecate',
+        '/account/my/uploadPic',
+        '/account/my/userinfo',
+        /^\/uploads\/.*/,
     ] // 除了这几个接口，其他都需要认证
 }));
+
+
+// server.use('*', (req, res, next) => {
+//     console.log('next===>');
+//     next();
+// })
 
 
 // 导入
 const routerCategories = require('./router/router_categories');
 const routerUser = require('./router/router_user');
+const routerAccount = require('./router/router_account');
 server.use('/categories', routerCategories);
 server.use('/user', routerUser);
+server.use('/account', routerAccount);
 
 // 错误处理中间件
 server.use((err, req, res, next) => {
