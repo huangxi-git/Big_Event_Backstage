@@ -9,6 +9,9 @@ const server = express();
 //     res.send('连接成功，OK!');
 // });
 
+// 解决跨域问题
+const cors = require('cors');
+server.use(cors());
 
 // 导入
 const routerCategories = require('./router/router_categories');
