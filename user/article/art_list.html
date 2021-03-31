@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="/assets/css/article/art_list.css">
+</head>
+
+<body>
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <span>文章列表</span>
+        </div>
+        <div class="layui-card-body">
+
+            <!-- 筛选区域 -->
+            <form class="layui-form" action="" id="form-search">
+                <div class="layui-form-item layui-inline">
+                    <select name="cate_id">
+                        <!-- <option value="">所有分类</option>
+                        <option value="0">北京</option>
+                        <option value="1">上海</option>
+                        <option value="2">广州</option>
+                        <option value="3">深圳</option> -->
+                    </select>
+                </div>
+                <div class="layui-form-item layui-inline">
+                    <select name="state">
+                        <option value="">所有状态</option>
+                        <option value="已发布">已发布</option>
+                        <option value="草稿">草稿</option>
+                    </select>
+                </div>
+                <div class="layui-form-item layui-inline">
+                    <button class="layui-btn  layui-btn-warm">筛选</button>
+                </div>
+            </form>
+
+
+            <!-- 列表区域 -->
+            <table class="layui-table">
+                <colgroup>
+                    <col>
+                    <col width="200">
+                    <col width="280">
+                    <col width="200">
+                    <col width="200">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>文章标题</th>
+                        <th>分类</th>
+                        <th>发表时间</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>贤心</td>
+                        <td>2016-11-29</td>
+                        <td>2016-11-29</td>
+                        <td>2016-11-29</td>
+                        <td>
+                            <button class="layui-btn layui-btn-sm" lay-submit lay-filter="formDemo">操作</button>
+                            <button type="reset" class="layui-btn  layui-btn-sm layui-btn-danger">删除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- 分页区域 -->
+            <div id="pageBox">
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <!-- 模板引擎 -->
+    <script src="/assets/lib/template-web.js"></script>
+
+
+    <!-- jq -->
+    <script src="/assets/lib/jquery.js"></script>
+    <!-- layui js  -->
+    <script src="/assets/lib/layui/layui.all.js"></script>
+</body>
+
+</html>
