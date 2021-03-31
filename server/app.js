@@ -23,7 +23,15 @@ server.use(jwt({
     secret: 'bignew1',          // 生成token时的 钥匙，必须统一
     algorithms: ['HS256'],      // 必填，加密算法，无需了解
 }).unless({
-    path: ['/user/login', '/user/register'] // 除了这两个接口，其他都需要认证
+    path: [
+        '/user/api/reguser',
+        '/user/api/login',
+        '/categories/my/article/deletecate',
+        '/categories/my/article/addcates',
+        '/categories/my/article/cates',
+        '/categories/my/article/getCatesById',
+        '/categories/my/article/updatecate',
+    ] // 除了这几个接口，其他都需要认证
 }));
 
 
@@ -37,7 +45,7 @@ server.use('/user', routerUser);
 server.use((err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
         // res.status(401).send('invalid token...');
-        res.status(401).send({ status: 1, message: '身份认证失败！' });
+        res.status(401).send({ status: 1, message: 'token身份认证失败！' });
     };
 });
 
