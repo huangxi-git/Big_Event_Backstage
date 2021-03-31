@@ -13,13 +13,33 @@ const server = express();
 const cors = require('cors');
 server.use(cors());
 
+
+// 中间件技术 -- 验证 token -- 代码官网赋值
+const jwt = require('express-jwt');
+// app.use(jwt().unless());
+// jwt() 用于解析token，并将 token 中保存的数据 赋值给 req.user
+// unless() 约定某个接口不需要身份认证
+server.use(jwt({
+    secret: 'bignew1',          // 生成token时的 钥匙，必须统一
+    algorithms: ['HS256'],      // 必填，加密算法，无需了解
+}).unless({
+    path: ['/user/login', '/user/register'] // 除了这两个接口，其他都需要认证
+}));
+
+
 // 导入
 const routerCategories = require('./router/router_categories');
 const routerUser = require('./router/router_user');
 server.use('/categories', routerCategories);
 server.use('/user', routerUser);
 
-
+// 错误处理中间件
+server.use((err, req, res, next) => {
+    if (err.name === 'UnauthorizedError') {
+        // res.status(401).send('invalid token...');
+        res.status(401).send({ status: 1, message: '身份认证失败！' });
+    };
+});
 
 // 启用服务
 server.listen(1807, () => {
