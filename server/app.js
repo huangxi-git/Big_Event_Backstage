@@ -28,8 +28,6 @@ server.use(jwt({
     path: [
         '/user/api/reguser',
         '/user/api/login',
-        '/account/my/uploadPic',
-        '/account/my/userinfo',
         /^\/uploads\/.*/,
     ] // 除了这几个接口，其他都需要认证
 }));

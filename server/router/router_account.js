@@ -38,7 +38,7 @@ router.get('/my/userinfo', (req, res) => {
     console.log('接收的参数:', req.query);
     const { username } = req.query;
     // 2、拼接sql
-    const sqlStr = `select id, username, nickname, email, userPic from users where username="${username}"`;
+    const sqlStr = `select id, username, nickname, email, userPic from users where username = "${username}"`;
     // console.log(sqlStr);
     // 3、操作sql
     conn.query(sqlStr, (err, result) => {

@@ -57,7 +57,7 @@ router.post('/api/login', (req, res) => {
         if (err) return res.json({ code: 1, message: '登录错误！' });
         if (result.length > 0) {
             // 返回 token ,调用 jwt 的 sign 
-            const token = 'bearer' + jwt.sign(
+            const token = 'Bearer ' + jwt.sign(
                 { name: username },
                 'bignew1',
                 { expiresIn: 14400 },
