@@ -77,15 +77,16 @@ $(function () {
                 password: pwd,
             },
             success: (res) => {
-                console.log(res);
+                // console.log(res);
+                // console.log(act);
                 // 登录失败
                 if (res.code != 0) {
                     return alert(res.message);
                 };
                 // 保存 后端返回的 token 
                 localStorage.setItem('token', res.token);
-                // 跳转页面
-                window.location.href = '/user/index.html';
+                // 跳转页面 -- 拼接需要传出的用户名
+                window.location.href = '/user/index.html' + '?' + act;
             },
         });
     });

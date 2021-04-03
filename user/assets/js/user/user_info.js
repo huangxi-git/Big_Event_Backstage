@@ -1,6 +1,9 @@
 $(function () {
     // console.log(55599);
 
+    // let accountName = window.location.search.split('?')[1];
+    // console.log(accountName);
+
     // ajax 请求 统一携带 token 
     $.ajaxSetup({
         headers: {
@@ -17,6 +20,7 @@ $(function () {
 
     // 封装 基本资料 函数 -- 修改
     function editInfo() {
+
         // 拿到 昵称 输入款内容
         const nickname = $('[name=nickname]').val().trim();
         // 邮箱
@@ -36,6 +40,8 @@ $(function () {
                 alert(res.message);
             },
         });
+
+
     };
 
 

@@ -11,8 +11,17 @@ $(function () {
         localStorage.removeItem('token');
     });
 
+    // // 点击跳转页面
+    // $('#basics').on('click', () => {
+    //     window.location.href = '/user/user/user_info.html' + '?' + accountName;
+    // });
+
 });
 
+// 在 URL 中拿取传入的  参数 username 
+// 将地址栏中传入的参数字符串才分成数组
+let accountName = window.location.search.split('?')[1];
+// console.log(accountName);
 
 // ajax 请求 统一携带 token 
 $.ajaxSetup({
@@ -25,15 +34,17 @@ $.ajaxSetup({
 userBaseInfo();
 
 
+
 // 获取用户基本信息
 // 全局函数，其他模块能调用
 function userBaseInfo() {
+
     // 发送请求
     $.ajax({
         type: 'get',
         url: 'http://127.0.0.1:1807/account/my/userinfo',
         data: {
-            username: "test1",
+            username: accountName,
         },
         success: (res) => {
             // console.log(res);
